@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 import com.example.quiz.R
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     Column(
         modifier = modifier
@@ -66,7 +66,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(50.dp))
 
         Button(
-            onClick = {  },
+            onClick = { navController.navigate("dados") },
             modifier = Modifier
                 .height(80.dp)
                 .width(300.dp)
