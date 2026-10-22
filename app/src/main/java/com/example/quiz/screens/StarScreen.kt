@@ -1,6 +1,5 @@
 package com.example.quiz.screens
 
-import android.widget.Button
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,6 +38,9 @@ fun DadosScreen (modifier: Modifier = Modifier, navController: NavController) {
         mutableStateOf("")
     }
 
+    var isSubmitted by remember { mutableStateOf(false) }
+    val nameError = if (isSubmitted && nomeJogador.isEmpty()) "Campo obrigatório" else null
+
     Column(
         modifier = modifier
         .fillMaxSize()
@@ -61,19 +63,22 @@ fun DadosScreen (modifier: Modifier = Modifier, navController: NavController) {
 
 
         CaixaDeEntrada(
-            modifier = Modifier,
-            label = "Nome do Jogador",
-            placeholder = "Digite seu nome de jogador",
-            keyboardType = KeyboardType.Text,
             value = nomeJogador,
-            atualizarValor = { novoNome -> nomeJogador = novoNome },
+            onValueChange = {
+                nomeJogador = it
+                if (isSubmitted && it.isNotEmpty()) isSubmitted = false
+                            },
+            label = "Nome",
+            placeholder = "Digite seu nome",
+            errorMessage = nameError,
         )
 
         Spacer(modifier = Modifier.height(50.dp))
 
         Button(
             onClick = {
-                if(nomeJogador.isNotBlank()) {
+                isSubmitted = true
+                if (nomeJogador.isNotEmpty()) {
                     navController.navigate("quiz/$nomeJogador")
                 }
             },

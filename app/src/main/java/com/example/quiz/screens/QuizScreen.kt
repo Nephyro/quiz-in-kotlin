@@ -1,5 +1,6 @@
 package com.example.quiz.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -30,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.quiz.R
 import com.example.quiz.components.CardPergunta
 import com.example.quiz.listaDePerguntas
 import kotlinx.coroutines.delay
@@ -121,17 +125,19 @@ fun QuizScreen(
                 }
             )
         } else {
-            // Sua tela de resultado final (mantida igual)
+            // Tela de resultado final
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(
-                    modifier = Modifier.size(70.dp),
+                    modifier = Modifier.size(100.dp),
                     painter = painterResource(com.example.quiz.R.drawable.quiz_icon),
                     contentDescription = "logo quiz"
                 )
+
+                Spacer(modifier = Modifier.height(32.dp))
 
                 Column(
                     modifier = modifier
@@ -161,6 +167,35 @@ fun QuizScreen(
                     Text(
                         text = "Você acertou $pontos de ${perguntasEmbaralhadas.size} perguntas",
                         fontSize = 20.sp
+                    )
+
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    onClick = {
+                        if(nomeJogador.isNotBlank()) {
+                            navController.navigate("home") {
+                                popUpTo("home") { inclusive = true }
+                            }
+                        }
+                    },
+                    modifier = Modifier
+                        .height(80.dp)
+                        .width(250.dp)
+                        .padding(10.dp),
+                    colors = ButtonDefaults.buttonColors(colorResource(R.color.yellow_white)),
+                    border = BorderStroke(
+                        width = 2.dp,
+                        color = colorResource(R.color.black)
+                    )
+                ) {
+                    Text(
+                        text = "JOGAR NOVAMENTE!",
+                        color = colorResource(R.color.black),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium
                     )
                 }
             }

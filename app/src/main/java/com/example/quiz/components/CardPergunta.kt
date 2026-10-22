@@ -12,65 +12,12 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-//@Composable
-//fun CardPergunta(
-//    modifier: Modifier = Modifier,
-//    pergunta: String,
-//    opcoes: List<String>,
-//    respostaCorreta: String?,
-//    onOpcaoSelecionada: (String) -> Unit
-//) {
-//    Card(
-//        modifier = modifier
-//            .fillMaxWidth()
-//            .padding(16.dp),
-//        shape = RoundedCornerShape(16.dp),
-//        colors = CardDefaults.cardColors(
-//            containerColor = MaterialTheme.colorScheme.surface
-//        ),
-//        elevation = CardDefaults.cardElevation(4.dp)
-//    ) {
-//        // Conteúdo do cartão
-//        Column(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(24.dp),
-//            verticalArrangement = Arrangement.spacedBy(16.dp)
-//        ) {
-//            // Título da pergunta
-//            Text(
-//                text = pergunta,
-//                fontSize = 20.sp,
-//                color = MaterialTheme.colorScheme.onSurface
-//            )
-//
-//            // Lista de opções
-//            opcoes.forEach { opcao ->
-//                OutlinedButton(
-//                    onClick = { onOpcaoSelecionada(opcao) },
-//                    modifier = Modifier.fillMaxWidth(),
-//                    shape = RoundedCornerShape(8.dp)
-//                ) {
-//                    Text(
-//                        text = opcao,
-//                        fontSize = 16.sp,
-//                        modifier = Modifier.padding(vertical = 4.dp)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//
-//}
-
 
 @Composable
 fun CardPergunta(
